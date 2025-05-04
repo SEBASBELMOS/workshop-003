@@ -10,19 +10,21 @@ This project implements a machine learning pipeline to predict happiness scores 
 | Folder/File            | Description |
 |------------------------|------------|
 | **assets/**             | Static resources (images, documentation, etc.) |
-| **data/**             | Dataset used in the project (ignored in .gitignore) |
+| **dashboard/**                   | Dashboard script | 
+| **data/**             | Data used in the project (ignored in .gitignore) |
+| ├── database/                 |	Database Script  |
+| ├── raw/                 |	World Happiness CSV files  |
+| ├── processed/                 |	World Happiness Report file  |
 | **docs/**              | Documentation, Guides and workshop PDFs |
-| **model/**              | AI Model and Training |
-| **notebooks/**        | Jupyter Notebooks with analysis |
-| ├── 01_EDA.ipynb | Exploratory Data Analysis of CSV files  |  
-| ├── 02_model-training.ipynb   | Model Selection and Training   |  
-| **kafka/**                   | Python scripts for tasks and utilities   | 
-| **Dashboard/**                   | Dashboard script | 
-| **venv/**              | Virtual environment (ignored in .gitignore) |
 | **env/**               | Environment variables (ignored in .gitignore) |
 | ├── .env                 |	Stores credentials and paths  |
+| **kafka/**                   | Python scripts for Apache Kafka   | 
+| **model/**              | AI Model |
+| **notebooks/**        | Jupyter Notebooks |
+| ├── 01_EDA.ipynb | Exploratory Data Analysis of CSV files  |  
+| ├── 02_model-training.ipynb   | Model Selection and Training   |  
+| ├── 03_model-performance.ipynb   | Model Performance / Metrics  |  
 | **docker-compose.yml**         | Docker configuration |
-| **requirements.txt**         | All the libraries required to execute this project properly |
 | **pyproject.toml**    | Poetry dependency management file |
 | **README.md**         | This file |
 
@@ -106,6 +108,10 @@ All the libraries are included in the Poetry project config file (_pyproject.tom
         PG_PASSWORD = #your user password
         
         PG_DATABASE = #your database name, e.g. postgres
+        ```
+    4. Create the database with this command:
+        ```bash
+        psql -U your_username -c "CREATE DATABASE happiness_db;"
         ```
 
 ---
