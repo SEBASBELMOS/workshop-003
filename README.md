@@ -139,11 +139,27 @@ All the libraries are included in the Poetry project config file (_pyproject.tom
         ```
         <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/kafka_topic_list.png" width="300"/>
 
-    6. Finally, run the files from the kafka directory (`producer.py` and `consumer.py`, in the same order)
+    6. Finally, run the files from the kafka directory (`producer.py` and `consumer.py`, in the same order) with the following commands:
+
+        ```bash
+        python kafka/producer.py
+        ```
+
+        ```bash
+        python kafka/consumer.py
+        ```
 
         <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/kafka_execution.png" width="300"/>
 
         <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/kafka_execution_all_data.png" width="300"/>
+
+    7. Optional Cleanup (After executing everything)
+
+        ```bash
+        docker-compose down
+        psql -h localhost -U postgres -d happiness_db -c "DELETE FROM happiness;"
+        psql -h localhost -U postgres -d happiness_db -c "ALTER SEQUENCE happiness_id_seq RESTART WITH 1;"
+        ```
 
 ---
 
