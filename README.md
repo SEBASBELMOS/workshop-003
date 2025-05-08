@@ -82,7 +82,7 @@ All the libraries are included in the Poetry project config file (_pyproject.tom
     - Then, execute _poetry init_, it will create a file called _pyproject.toml_
     - To add all the dependencies, execute this: 
         ```bash
-        poetry add pandas matplotlib psycopg2-binary sqlalchemy python-dotenv seaborn ipykernel dotenv
+        poetry add pandas matplotlib psycopg2-binary sqlalchemy python-dotenv seaborn ipykernel dotenv kafka-python
         ```
     - Install the dependencies with: 
         ```bash
@@ -113,6 +113,37 @@ All the libraries are included in the Poetry project config file (_pyproject.tom
         ```bash
         psql -U your_username -c "CREATE DATABASE happiness_db;"
         ```
+
+5. **Execution**
+
+    1. Run all the notebooks to create the EDA, transformations and model.
+    2. Run this command to start the Docker Containers for Kafka and Zookeeper.
+        ```bash
+        docker-compose up -d
+        ```
+    3. To check if the container are correctly running, use this command:
+        ```bash
+        docker ps
+        ```
+        <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/docker_ps.png" width="300"/>
+
+    4. Now we can create a `Kafka Topic` with this command:
+        ```bash
+        docker exec -it kafka_w3 kafka-topics --create --topic wh_kafka_topic --bootstrap-server localhost:9092
+        ```
+        <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/kafka_topic_creation.png" width="300"/>
+
+    5. To check if it was created, run this command:
+        ```bash
+        docker exec -it kafka_w3 kafka-topics --list --bootstrap-server localhost:9092
+        ```
+        <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/kafka_topic_list.png" width="300"/>
+
+    6. Finally, run the files from the kafka directory (`producer.py` and `consumer.py`, in the same order)
+
+        <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/kafka_execution.png" width="300"/>
+
+        <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/kafka_execution_all_data.png" width="300"/>
 
 ---
 
