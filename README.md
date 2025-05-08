@@ -10,7 +10,6 @@ This project implements a machine learning pipeline to predict happiness scores 
 | Folder/File            | Description |
 |------------------------|------------|
 | **assets/**             | Static resources (images, documentation, etc.) |
-| **dashboard/**                   | Dashboard script | 
 | **data/**             | Data used in the project (ignored in .gitignore) |
 | ├── database/                 |	Database Script  |
 | ├── raw/                 |	World Happiness CSV files  |
@@ -24,6 +23,7 @@ This project implements a machine learning pipeline to predict happiness scores 
 | ├── 01_EDA.ipynb | Exploratory Data Analysis of CSV files  |  
 | ├── 02_model-training.ipynb   | Model Selection and Training   |  
 | ├── 03_model-performance.ipynb   | Model Performance / Metrics  |  
+| **utilities/**        | Python scripts for Data processing |
 | **docker-compose.yml**         | Docker configuration |
 | **pyproject.toml**    | Poetry dependency management file |
 | **README.md**         | This file |
