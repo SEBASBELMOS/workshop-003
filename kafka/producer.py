@@ -4,6 +4,7 @@ import pandas as pd
 import datetime as dt
 import sys
 import os
+from sklearn.model_selection import train_test_split
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -12,8 +13,9 @@ from utilities.data_preprocessing import continent, delete_columns, convert_to_d
 def test_data():
     df = pd.read_csv("data/processed/world_happiness_report.csv")
     
-    #df_test = df.sample(n=100, random_state=42)
-    df_test = df
+    df_train, df_test = train_test_split(df, test_size=0.3, random_state=200)
+    
+    print(f"Total rows: {len(df)}, Test rows: {len(df_test)}")
     
     if 'country' in df_test.columns:
         df_test['continent'] = df_test['country'].apply(continent) 

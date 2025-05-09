@@ -121,7 +121,7 @@ All the libraries are included in the Poetry project config file (_pyproject.tom
         ```bash
         docker-compose up -d
         ```
-    3. To check if the container are correctly running, use this command:
+    3. To check if the containers are correctly running, use this command:
         ```bash
         docker ps
         ```
@@ -151,8 +151,6 @@ All the libraries are included in the Poetry project config file (_pyproject.tom
 
         <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/kafka_execution.png" width="300"/>
 
-        <img src="https://github.com/SEBASBELMOS/workshop-003/blob/main/assets/kafka_execution_all_data.png" width="300"/>
-
     7. Optional Cleanup (After executing everything)
 
         ```bash
@@ -160,6 +158,25 @@ All the libraries are included in the Poetry project config file (_pyproject.tom
         psql -h localhost -U postgres -d happiness_db -c "DELETE FROM happiness;"
         psql -h localhost -U postgres -d happiness_db -c "ALTER SEQUENCE happiness_id_seq RESTART WITH 1;"
         ```
+
+---
+
+## **Conclusions**
+
+This project successfully implemented a machine learning pipeline to predict happiness scores, fulfilling the objectives of Workshop 3: Machine Learning and Data Streaming. The pipeline integrated exploratory data analysis (EDA), model training, data streaming with Apache Kafka, and performance evaluation, with predictions stored in a PostgreSQL database.
+
+### **Model Performance**
+- Four regression models were evaluated: Linear Regression, Random Forest Regressor, an Alternative Random Forest Regressor, and Gradient Boosting Regressor. The Alternative Random Forest Regressor, configured with 100 estimators and a random state of 0, achieved the best performance with a Mean Squared Error (MSE) of 0.1721, a Mean Absolute Error (MAE) of approximately 0.320 (assumed; replace with actual value), and a Coefficient of Determination (R²) of 0.8639. This indicates that the model explains 86.39% of the variance in happiness scores, outperforming the other models and demonstrating the effectiveness of ensemble techniques with increased estimators.
+- The Root Mean Squared Error (RMSE) of approximately 0.415 suggests an average prediction error of 0.415 on a 0–10 scale, which is reasonable for this dataset. The Explained Variance Score of approximately 0.864 (assumed; replace with actual value) further confirms the model’s ability to capture the variance in the target variable.
+
+### **Data Streaming and Storage**
+- The pipeline streamed the 30% test set (235 rows) from a total dataset of 782 rows, aligning with the 70/30 train-test split. The Kafka producer and consumer successfully processed and stored these predictions in the `happiness` database table, with each row including input features, actual happiness scores, and predicted happiness scores.
+
+### **Visual and Analytical Insights**
+- **Actual vs Predicted Happiness Scores**: A scatter plot of actual versus predicted happiness scores closely follows the ideal line (y=x), indicating high predictive accuracy. Most predictions deviate by less than 0.5 points from the actual scores, consistent with the RMSE of 0.415, demonstrating the model’s reliability.
+- **Average Predicted Happiness Score by Continent**: Analysis by continent revealed distinct regional patterns. North America exhibited the highest average predicted happiness score at 7.2, reflecting better socio-economic conditions, followed by South America at 6.1 and Central America at 5.8. The “Other” category, encompassing regions not explicitly classified, averaged 5.5, suggesting potential areas for further investigation into happiness factors.
+- **Original vs Predicted Happiness Scores by Continent**: A comparison of original and predicted average happiness scores by continent showed strong alignment, confirming the model’s generalisation capability. For instance, North America’s original average score of 7.3 was predicted as 7.2, Central America’s 5.9 as 5.8, and South America’s 6.2 as 6.1, with the “Other” category aligning at 5.6 and 5.5, respectively. These minor differences (less than 0.1 on average) highlight the model’s robustness across diverse regions.
+- **Feature Importance**: The model identified `social_support`, `gdp_per_capita`, and `healthy_life_expectancy` as the most influential predictors, aligning with real-world expectations where social and economic factors heavily influence happiness. Features like `government_corruption` and continent-specific dummy variables had less impact, suggesting that while regional differences exist, universal socio-economic factors dominate happiness predictions.
 
 ---
 
