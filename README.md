@@ -45,7 +45,7 @@ All the libraries are included in the Poetry project config file (_pyproject.tom
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/SEBASBELMOS/workshop-003.git
-   cd workshop-001
+   cd workshop-003
    ````
 
 2. **Installing the dependencies with _Poetry_**
