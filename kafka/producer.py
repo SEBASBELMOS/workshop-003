@@ -66,7 +66,7 @@ def producer_kafka(df_test):
         try:
             producer = KafkaProducer(
                 value_serializer=lambda m: dumps(m).encode('utf-8'),
-                bootstrap_servers=['localhost:9092'], 
+                bootstrap_servers=['localhost:9092'],  
                 batch_size=16384,
                 linger_ms=10,
                 api_version=(2, 6, 0),
