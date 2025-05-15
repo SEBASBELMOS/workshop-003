@@ -163,8 +163,6 @@ All the libraries are included in the Poetry project config file (_pyproject.tom
 
 ---
 
-<<<<<<< Updated upstream
-=======
 ## **Conclusions**
 
 This project successfully implemented a machine learning pipeline to predict happiness scores, fulfilling the objectives of Workshop 3: Machine Learning and Data Streaming. The pipeline integrated exploratory data analysis (EDA), model training, data streaming with Apache Kafka, and performance evaluation, with predictions stored in a PostgreSQL database.
@@ -189,7 +187,6 @@ This project successfully implemented a machine learning pipeline to predict hap
 - **Feature Importance**: The model identified `gdp_per_capita` and `health_life_expectancy` as the most influential predictors, followed by `freedom`, `social_support`, `generosity`, and `government_corruption`.
 ---
 
->>>>>>> Stashed changes
 ## **Author**  
 Created by **Sebastian Belalcazar Mosquera**. Connect with me on [LinkedIn](https://www.linkedin.com/in/sebasbelmos/) for feedback, suggestions, or collaboration opportunities!
 

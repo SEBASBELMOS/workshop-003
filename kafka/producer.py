@@ -4,12 +4,9 @@ import pandas as pd
 import datetime as dt
 import sys
 import os
-<<<<<<< Updated upstream
-=======
 import time
 from sklearn.model_selection import train_test_split
 from kafka.errors import KafkaConnectionError, KafkaTimeoutError
->>>>>>> Stashed changes
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -28,17 +25,12 @@ def create_dummy_vars(df):
 def test_data():
     df = pd.read_csv("data/processed/world_happiness_report.csv")
     
-<<<<<<< Updated upstream
-    #df_test = df.sample(n=100, random_state=42)
-    df_test = df
-=======
     if 'continent' not in df.columns:
         raise ValueError("Column 'continent' not found in world_happiness_report.csv. Please preprocess the data first.")
     
     df_train, df_test = train_test_split(df, test_size=0.3, random_state=200)
     
     print(f"Total rows: {len(df)}, Test rows: {len(df_test)}")
->>>>>>> Stashed changes
     
     if 'country' in df_test.columns:
         print("Country column present, but continent is precomputed from CSV.")
@@ -74,7 +66,7 @@ def producer_kafka(df_test):
         try:
             producer = KafkaProducer(
                 value_serializer=lambda m: dumps(m).encode('utf-8'),
-                bootstrap_servers=['localhost:9092'],
+                bootstrap_servers=['localhost:9092'], 
                 batch_size=16384,
                 linger_ms=10,
                 api_version=(2, 6, 0),
